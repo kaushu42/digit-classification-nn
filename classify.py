@@ -95,7 +95,7 @@ def backward(y, w2, b2, w1, b1, x, cache):
 # Set verbose = True for training progess
 # Set return_costs = True to return the costs at each iteration
 def train(x_train, y_train, learning_rate, iterations, return_costs = False, verbose = False):
-    w1, b1, w2, b2 = init_parameters(64, 32, 10)
+    w1, b1, w2, b2 = init_parameters(64, 70, 10)
     m = x_train.shape[0]
     costs = []
 
@@ -148,7 +148,7 @@ def main():
     X = scale(X)
     x_train, x_test, y_train, y_test = split(X, Y, 0.2)
     y_train_original = y_train.copy()
-    
+
     print('Train Set Size: ', y_train.shape[0])
     print('Test Set Size: ', y_test.shape[0])
 
