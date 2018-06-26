@@ -50,8 +50,11 @@ def softmax(z):
     return exps/exps.sum(axis = 1, keepdims = True)
 
 # Calculate the cross-entropy loss
-def cost(y, a):
-    return -np.mean(y*np.log(a) + (1-y)*np.log(1-a))
+def cost(predictions, targets, epsilon=1e-12):
+    predictions = np.clip(predictions, epsilon, 1. - epsilon)
+    N = predictions.shape[0]
+    ce = -np.sum(np.sum(targets*np.log(predictions+1e-9)))/N
+    return ce
 
 # Randomly initialize the parameters
 def init_parameters(input_size, hidden_size, output_size):
